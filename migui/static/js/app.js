@@ -1,6 +1,15 @@
 // -*- mode: js; coding: utf-8 -*-
 
-var miguiApp = angular.module("MiguiApp", ['ngRoute', 'ngAnimate']);
+var miguiApp = angular.module(
+    "MiguiApp", ['ngRoute', 'ngAnimate', 'angular-svg-round-progress']);
+
+miguiApp.config(['$routeProvider', function($routeProvider) {
+    $routeProvider
+	.when('/', {
+	    templateUrl: '/static/partials/scan_devices.html',
+	});
+}]);
+
 
 Logger = Class.extend({
     on_failure: function(error) {
@@ -23,6 +32,8 @@ function wise_application(broker) {
     broker.stringToProxy("DeviceManager -w ws").then(
      	function(proxy) {
      	    $rootScope.manager = proxy;
+	    $rootScope.wise_ready = true;
+	    $rootScope.$apply();
 
      	}, logger.on_failure);
 };

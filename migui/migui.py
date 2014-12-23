@@ -8,15 +8,18 @@ from subprocess import Popen
 
 class DeviceManager(object):
     def discover(self, current):
-        print "discover called"
+        import time
+        time.sleep(2)
 
-    def connect(self, addr):
+        return [{'address': "00:11:22:33:44:55", 'name': "MI"}]
+
+    def connect(self, addr, current):
         print "connect to {} called".format(addr)
 
 
 class Backend(object):
     def __init__(self):
-        broker = wise.initialize()
+        broker = wise.initialize(properties={"TornadoApp.debug": True})
         static = os.path.join(wise.dirname(__file__), "static")
         broker.register_StaticFS('/static', static)
         url = broker.get_url('static/index.html')
