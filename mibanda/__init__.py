@@ -305,13 +305,15 @@ class BandDevice(object):
         seq[6] = height & 0xff
         seq[7] = weight & 0xff
         seq[8] = type_ & 0xff
+        seq[9] = 0x04
+        seq[10]= 0x00
 
         if alias is None:
-            alias = str(uid)
-            alias = "0" * (10 - len(alias)) + alias
+            alias = str(uid) + "0"*8
+            alias = alias[:8]
 
-        assert len(alias) == 10, "'alias' size must be 10 chars"
-        seq[9:19] = alias
+        assert len(alias) == 8, "'alias' size must be 8 chars"
+        seq[11:19] = alias
 
         addr = self.getAddress()
         crc = self._getCRC8(seq[:19])
