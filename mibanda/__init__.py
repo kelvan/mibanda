@@ -308,9 +308,12 @@ class BandDevice(object):
         seq[9] = 0x04
         seq[10]= 0x00
 
+
         if alias is None:
-            alias = str(uid) + "0"*8
-            alias = alias[:8]
+            alias = str(uid)
+
+        alias = alias + " "*8
+        alias = alias[:8]
 
         assert len(alias) == 8, "'alias' size must be 8 chars"
         seq[11:19] = alias
