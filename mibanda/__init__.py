@@ -650,6 +650,7 @@ class Calendar(object):
     FRIDAY     = 0b00010000
     SATURDAY   = 0b00100000
     SUNDAY     = 0b01000000
+    WEEKDAY    = 0b00011111
     EVERYDAY   = 0b01111111
 
 
