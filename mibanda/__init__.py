@@ -341,7 +341,7 @@ class BandDevice(object):
           >>> device.flashLeds(6, 0, 0)
 
           >>> # set orange
-          >>> device.flashLeds(*miband.Colors.ORANGE)
+          >>> device.flashLeds(*mibanda.Colors.ORANGE)
         """
 
         self.requester.write_by_handle(
@@ -631,11 +631,11 @@ class Handle(object):
     CONTROL_POINT = 0x1b
 
     #: Handle for UUID DATE_TIME.
-    DATE_TIME = 0x27
+    DATE_TIME = 0x28
 
     #: Handle to do an automatic hardware test.
-    TEST = 0x2e
-
+    TEST = 0x2f
+    
     #: Handle for pairing device.
     PAIR = 0x33
 
