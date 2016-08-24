@@ -1,8 +1,9 @@
-syntax: glob
-
 *.pyc
+__pycache__
 *~
 *.so
 *.o
+
+env
 
 docs/_build
